@@ -1,0 +1,25 @@
+{
+	"name": "Assignment121-1",
+	"version":"0.0.1",
+	"author":"Cristiano Faustino",
+	"scripts":{
+		"start":"node app.js"
+	},
+	"dependencies":{
+		"express":"3.x",
+		"dotenv":"*",
+		"express3-handlebars":"*",
+		"mongodb":"*",
+		"mongoose":"*",
+		"passport":"*",
+		"fbgraph":"*",
+		"instagram-node-lib":"*",
+		"passport-facebook":"*",
+		"passport-twitter":"*",
+		"superagent":"0.14.6",
+		"consolidate":"0.9.1"
+	},
+	"engines":{
+		"node":"0.10.x"
+	}
+}
