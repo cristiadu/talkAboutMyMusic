@@ -30,6 +30,8 @@
 					<h2>Some friends that like this artist</h2>
 					{{#each pics}}
 					<div class="col-xs-1 col-md-1"><img class="img-responsive" src="{{pic}}"></div>
+					{{else}}
+					<h4><small>You don't have any friend that liked this artist on facebook.</small></h4>
 					{{/each}}
 				</div>
 			</div>
@@ -51,6 +53,9 @@
                             
                             
                         </div>
+                     {{else}}
+					<div class="row"><div class="col-xs-12 col-md-12"><h3><small>There's no post available on the {{artist.name}} Facebook page.</small></h3></div></div>
+					
                      {{/each}}
 				</div>
 				<div class="col.md-6 col-xs-6" style="padding-left:40px;">
@@ -70,6 +75,9 @@
                             
                             
                         </div>
+                         {{else}}
+					<div class="row"><div class="col-xs-12 col-md-12"><h3><small>There's no tweet talking about {{artist.name}}.</small></h3></div></div>
+					
                      {{/each}}
 				</div>
 			</div>
