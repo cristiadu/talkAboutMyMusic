@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<title>Hello World </title>
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	    <!--[if lt IE 9]>
+	      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	    <![endif]-->        
+	    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+	</head>
+	<body>
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-12 col-xs-12">
+					<h1>{{artist.name}}</h1>
+					<h2><small>{{artist.about}}</small></h2>
+					<p><strong>Number of Likes: </strong>{{artist.fan_count}}</p>
+					<p><strong>Hometown: </strong>{{artist.hometown}}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 col-xs-12">
+					<h2>Some friends that like this artist</h2>
+					{{#each pics}}
+					<div class="col-xs-1 col-md-1"><img class="img-responsive" src="{{pic}}"></div>
+					{{/each}}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-xs-6">
+					<h2>Last posts on {{artist.name}} Facebook page:</h2>
+					{{#each posts}}
+					<div class="row">
+                            
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <p>{{message}}</p>
+                                     <div class="col-md-3 col-xs-3"><small><strong>Likes:</strong> {{like_info.like_count}} </small></div>
+                                     <div class="col-md-3 col-xs-3"><small><strong>Shares:</strong> {{share_info.share_count}} </small></div>
+                                     <div class="col-md-6 col-xs-6"><small><strong>Posted on:</strong> {{created_time}}</small>   </div>
+                                    </div>
+                                </div>
+
+                            
+                            
+                        </div>
+                     {{/each}}
+				</div>
+				<div class="col.md-6 col-xs-6">
+				  <h2>Last tweets about {{artist.name}} on Twitter:</h2>
+				  <a class="twitter-timeline" width="300" height="500" href="https://api.twitter.com/1.1/search/tweets.json?q=%23freebandnames&since_id=24012619984051000&max_id=250126199840518145&result_type=mixed&count=4" data-widget-id="YOUR-WIDGET-ID-HERE">Tweets by @twitterapi</a>
+				</div>
+			</div>
+		</div>
+		<script src="https://code.jquery.com/jquery.js"></script>
+	    <script src="js/jquery.validate.min.js"></script>
+	    <script src="js/additional-methods.min.js"></script>
+	    <script src="js/validate.js"></script>
+	    <script src="js/bootstrap.js"></script>
+	</body>
+</html>

@@ -16,9 +16,9 @@
 				<h1>Talk About My Music!<br></h1>
 				<h2><small>Enter the artist and see what your facebook friends and people on twitter talk about it</small></h2>
 				
-		        <form id="viewHashTag" role="form" method="get" action="/auth/facebook">
-		            
-		            <input type="submit" id="submitBtn" class="btn btn-primary" value="Connect with Facebook"></input>
+		        <form id="viewHashTag" role="form" method="post" action="/search">
+		            <input type="text" class="form-control" name="artist" placeholder="Put the artist name here">
+		            <input type="submit" id="submitBtn" class="btn btn-success" value="Search"></input>
 		        </form>
 			</div>
 		</div>
