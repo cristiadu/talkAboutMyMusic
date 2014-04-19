@@ -87,7 +87,7 @@ app.get('/search',function(req,res){
  	
 
  	// get the artist page
-	var query = 'SELECT page_id,name,about,hometown,fan_count,pic_cover FROM page WHERE CONTAINS("'+req.query.artist+'") and type="Musician/Band" LIMIT 1';
+	var query = 'SELECT page_id FROM page WHERE (CONTAINS("'+req.query.artist+'") OR name="'+req.query.artist+'") and type="Musician/Band" LIMIT 1';
 	
 	graph.fql(query, function(err, res3) 
 	{
@@ -95,11 +95,11 @@ app.get('/search',function(req,res){
 	  {
 	  if((res3.data.length >= 1))
 	  {
-	  	console.log(res3.data);
+	  	
 	  var query2 = {
-	  	artist: 'SELECT page_id,name,about,hometown,fan_count,pic_cover FROM page WHERE CONTAINS("'+req.query.artist+'") and type="Musician/Band" LIMIT 1',
+	  	artist: 'SELECT page_id,name,about,hometown,fan_count,pic_cover FROM page WHERE (CONTAINS("'+req.query.artist+'") OR name="'+req.query.artist+'") and type="Musician/Band" LIMIT 1',
 	  	friends: 'SELECT pic FROM user WHERE uid IN (SELECT uid FROM page_fan WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND page_id = '+res3.data[0].page_id+' LIMIT 12)',
-	  	posts: 'SELECT message,like_info,created_time,share_info FROM stream WHERE source_id='+res3.data[0].page_id+' AND actor_id!='+res3.data[0].page_id+' LIMIT 20'};
+	  	posts: 'SELECT message,like_info,created_time,share_info FROM stream WHERE source_id='+res3.data[0].page_id+' LIMIT 20'};
 	  
 	 
 	  graph.fql(query2, function(err, res2) 
