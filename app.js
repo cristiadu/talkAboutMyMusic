@@ -67,7 +67,7 @@ app.get('/auth/facebook', function(req, res) {
     , "client_secret":  process.env.client_secret_facebook
     , "code":           req.query.code
   }, function (err, facebookRes) {
-    res.redirect('/UserHasLoggedIn');
+    res.redirect('/initial');
   });
 
 
@@ -75,7 +75,7 @@ app.get('/auth/facebook', function(req, res) {
 
 
 // user gets sent here after being authorized
-app.get('/UserHasLoggedIn', function(req, res) {
+app.get('/initial', function(req, res) {
 
   res.render("initial");
 });
