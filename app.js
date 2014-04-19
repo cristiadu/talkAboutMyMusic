@@ -71,7 +71,7 @@ app.get('/UserHasLoggedIn', function(req, res) {
   res.render("initial");
 });
 
-app.post('/search',function(req,res){
+app.get('/search',function(req,res){
 		
 	
  	// #FACEBOOK DATA#
