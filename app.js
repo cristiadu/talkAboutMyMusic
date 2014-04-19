@@ -10,7 +10,7 @@ app.use(express.bodyParser());
 
 //Require routes
 var	index	= require('./routes/index');
-var tweets = require('./tweets.json');
+
 //load environment variables
 var dotenv = require('dotenv');
 dotenv.load();
