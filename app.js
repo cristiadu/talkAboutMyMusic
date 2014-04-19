@@ -1,5 +1,6 @@
 var express = require('express');
 var graph = require('fbgraph');
+var Twit = require('twit')
 var http = require('http');
 var handlebars = require('express3-handlebars');
 var path = require('path');
@@ -9,8 +10,7 @@ app.use(express.bodyParser());
 
 //Require routes
 var	index	= require('./routes/index');
-var dataReturn = {};
-
+var tweets = require('./tweets.json');
 //load environment variables
 var dotenv = require('dotenv');
 dotenv.load();
@@ -30,7 +30,16 @@ app.post('/',function(req,res){
 	res.render('index');
 });
 
+// Acessing public twitter
+var T = new Twit({
+    consumer_key:          process.env.key_twitter
+  , consumer_secret:       process.env.secret_twitter
+  , access_token:          process.env.token_twitter
+  , access_token_secret:   process.env.token_secret_twitter
+})
 
+
+//Auth with facebook
 app.get('/auth/facebook', function(req, res) {
 
   // we don't have a code yet
@@ -82,7 +91,9 @@ app.get('/search',function(req,res){
 	
 	graph.fql(query, function(err, res3) 
 	{
-	  if(res3.data.length >= 1)
+	  if(res3.data !== undefined)
+	  {
+	  if((res3.data.length >= 1))
 	  {
 	  	console.log(res3.data);
 	  var query2 = {
@@ -93,7 +104,7 @@ app.get('/search',function(req,res){
 	 
 	  graph.fql(query2, function(err, res2) 
 	  {
-		  if(res2.data.length >=1)
+		  if((res2.data.length >=1)&&(res2.data !== undefined))
 		  {
 		   var artist = res2.data[0].fql_result_set;
 		   var pics = res2.data[1].fql_result_set;
@@ -106,7 +117,18 @@ app.get('/search',function(req,res){
 			 posts[i].created_time = (date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear()+' '+(date.getHours()+1)+':'+(date.getMinutes()+1);
 		   }
 		  
-		  res.render('artist',{'artist':artist[0],'pics':pics,'posts':posts});
+		   T.get('search/tweets', { q: req.query.artist+' lang:en', count: 20 }, function(err,reply){
+		   	
+		   	var date = new Date();
+		   	for(i in reply.statuses)
+		   	{
+		   		date = new Date(reply.statuses[i].created_at);
+		   		reply.statuses[i].created_at = (date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear()+' '+(date.getHours()+1)+':'+(date.getMinutes()+1);
+		   	}
+		   	res.render('artist',{'artist':artist[0],'pics':pics,'posts':posts,'tweets':reply});
+		   });
+
+		 
 		  }
 		  else
 		  	res.render('initial',{'error':'No results with the string you put'});
@@ -117,14 +139,19 @@ app.get('/search',function(req,res){
 	  }
 		  else
 		  	res.render('initial',{'error':'No results with the string you put'});
-
+		}
+		else
+		  	res.render('index');
 	});
 	// #END OF FACEBOOK DATA
 
 
 });
 
-
+function saveTwitterData(err, reply) 
+{
+    tweets = reply;
+}
 
 app.set('port',process.env.PORT || 3000);
 

@@ -13,6 +13,7 @@
 		"mongoose":"*",
 		"passport":"*",
 		"fbgraph":"*",
+		"twit":"*",
 		"instagram-node-lib":"*",
 		"passport-facebook":"*",
 		"passport-twitter":"*",
