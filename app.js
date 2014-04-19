@@ -91,7 +91,8 @@ app.get('/search',function(req,res){
 	 
 	  graph.fql(query2, function(err, res2) 
 	  {
-		  
+		  if(res2.data != undefined)
+		  {
 		   var artist = res2.data[0].fql_result_set;
 		   var pics = res2.data[1].fql_result_set;
 		   var posts = res2.data[2].fql_result_set;
@@ -102,9 +103,12 @@ app.get('/search',function(req,res){
 		   	 var date = new Date(posts[i].created_time*1000);
 			 posts[i].created_time = (date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear()+' '+(date.getHours()+1)+':'+(date.getMinutes()+1);
 		   }
-		 
-		  res.render('artist',{'artist':artist[0],'pics':pics,'posts':posts});
 		  
+		  res.render('artist',{'artist':artist[0],'pics':pics,'posts':posts});
+		  }
+		  else
+		  	res.render('initial',{'error':'No results with the string you put'});
+
 		  
 	  });
 	  
