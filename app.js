@@ -26,6 +26,9 @@ app.get('/', function(req, res){
   res.render("index", { title: "click link to connect" });
 });
 
+app.post('/',function(req,res){
+	res.render('index');
+}
 
 
 app.get('/auth/facebook', function(req, res) {
