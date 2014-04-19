@@ -28,7 +28,7 @@ app.get('/', function(req, res){
 
 app.post('/',function(req,res){
 	res.render('index');
-}
+});
 
 
 app.get('/auth/facebook', function(req, res) {
