@@ -117,7 +117,7 @@ app.get('/search',function(req,res){
 			 posts[i].created_time = (date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear()+' '+(date.getHours()+1)+':'+(date.getMinutes()+1);
 		   }
 		  
-		   T.get('search/tweets', { q: req.query.artist+' lang:en', count: 25 }, function(err,reply){
+		   T.get('search/tweets', { q: artist[0].name+' lang:en', count: 25 }, function(err,reply){
 		   	
 		   	var date = new Date();
 		   	for(i in reply.statuses)
