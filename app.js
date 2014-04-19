@@ -82,7 +82,9 @@ app.get('/search',function(req,res){
 	
 	graph.fql(query, function(err, res3) 
 	{
-	  
+	  if(res3.data.length >= 1)
+	  {
+	  	console.log(res3.data);
 	  var query2 = {
 	  	artist: 'SELECT page_id,name,about,hometown,fan_count,pic_cover FROM page WHERE CONTAINS("'+req.query.artist+'") and type="Musician/Band" LIMIT 1',
 	  	friends: 'SELECT pic FROM user WHERE uid IN (SELECT uid FROM page_fan WHERE uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) AND page_id = '+res3.data[0].page_id+' LIMIT 12)',
@@ -91,7 +93,7 @@ app.get('/search',function(req,res){
 	 
 	  graph.fql(query2, function(err, res2) 
 	  {
-		  if(res2.data != undefined)
+		  if(res2.data.length >=1)
 		  {
 		   var artist = res2.data[0].fql_result_set;
 		   var pics = res2.data[1].fql_result_set;
@@ -112,7 +114,9 @@ app.get('/search',function(req,res){
 		  
 	  });
 	  
-
+	  }
+		  else
+		  	res.render('initial',{'error':'No results with the string you put'});
 
 	});
 	// #END OF FACEBOOK DATA
