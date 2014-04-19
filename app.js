@@ -148,11 +148,6 @@ app.get('/search',function(req,res){
 
 });
 
-function saveTwitterData(err, reply) 
-{
-    tweets = reply;
-}
-
 app.set('port',process.env.PORT || 3000);
 
 
