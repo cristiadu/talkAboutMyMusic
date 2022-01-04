@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser')
 var graph = require('fbgraph');
 var Twit = require('twit')
 var http = require('http');
@@ -6,7 +7,7 @@ var handlebars = require('express3-handlebars');
 var path = require('path');
 var app = express();
 app.use(express.static(path.join(__dirname,'public')));
-app.use(express.bodyParser());
+app.use(bodyParser);
 
 //Require routes
 var	index	= require('./routes/index');
