@@ -18,7 +18,7 @@
 		"passport-facebook":"*",
 		"passport-twitter":"*",
 		"superagent":"5.1.1",
-		"consolidate":"0.9.1"
+		"consolidate":"0.16.0"
 	},
 	"engines":{
 		"node":"0.10.x"
