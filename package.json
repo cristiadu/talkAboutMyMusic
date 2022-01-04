@@ -1,26 +1,26 @@
 {
-	"name": "Assignment121-1",
-	"version":"0.0.1",
-	"author":"Cristiano Faustino",
-	"scripts":{
-		"start":"node app.js"
+	"name": "talk-about-my-music",
+	"version": "1.0.0",
+	"author": "Cristiano Faustino",
+	"scripts": {
+		"start": "node app.js"
 	},
-	"dependencies":{
-		"express":"4.x",
-		"dotenv":"*",
-		"express3-handlebars":"*",
-		"mongodb":"*",
-		"mongoose":"*",
-		"passport":"*",
-		"fbgraph":"*",
-		"twit":"*",
-		"instagram-node-lib":"*",
-		"passport-facebook":"*",
-		"passport-twitter":"*",
-		"superagent":"5.1.1",
-		"consolidate":"0.16.0"
+	"dependencies": {
+		"express": "4.x",
+		"dotenv": "*",
+		"express3-handlebars": "*",
+		"mongodb": "*",
+		"mongoose": "*",
+		"passport": "*",
+		"fbgraph": "*",
+		"twit": "*",
+		"instagram-node-lib": "*",
+		"passport-facebook": "*",
+		"passport-twitter": "*",
+		"superagent": "5.1.1",
+		"consolidate": "0.16.0"
 	},
-	"engines":{
-		"node":"0.10.x"
+	"engines": {
+		"node": "0.12.x"
 	}
 }
