@@ -18,7 +18,7 @@
 		"passport": "*",
 		"passport-facebook": "*",
 		"passport-twitter": "*",
-		"superagent": "5.1.1",
+		"superagent": "6.1.0",
 		"twit": "*"
 	},
 	"engines": {
