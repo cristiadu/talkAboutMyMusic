@@ -18,7 +18,7 @@
 		"passport": "^0.5.2",
 		"passport-facebook": "^3.0.0",
 		"passport-twitter": "^1.0.4",
-		"superagent": "^6.1.0",
+		"superagent": "^7.0.0",
 		"twit": "^2.2.11"
 	},
 	"engines": {
