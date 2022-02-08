@@ -14,7 +14,7 @@
 		"fbgraph": "^1.4.4",
 		"instagram-node-lib": "^0.1.1",
 		"mongodb": "^4.3.1",
-		"mongoose": "^6.2.0",
+		"mongoose": "^6.2.1",
 		"passport": "^0.5.2",
 		"passport-facebook": "^3.0.0",
 		"passport-twitter": "^1.0.4",
