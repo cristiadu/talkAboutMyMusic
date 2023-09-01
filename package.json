@@ -10,7 +10,7 @@
 		"consolidate": "1.0.1",
 		"dotenv": "^16.3.1",
 		"express": "4.x",
-		"express-handlebars": "^7.1.0",
+		"express-handlebars": "^7.1.2",
 		"fbgraph": "^1.4.4",
 		"instagram-node-lib": "^0.1.1",
 		"mongodb": "^5.7.0",
